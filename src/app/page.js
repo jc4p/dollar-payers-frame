@@ -13,7 +13,7 @@ export const metadata = {
         action: {
           type: "launch_frame",
           name: "Dollar Payers Override",
-          url: "http://localhost:3001",
+          url: process.env.NEXT_PUBLIC_BASE_URL,
           splashImageUrl: "https://images.kasra.codes/pay-dollar-square.png",
           splashBackgroundColor: "#FFFFFF"
         }
