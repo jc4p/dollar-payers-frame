@@ -1,0 +1,353 @@
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  border: 1px solid var(--terminal-green);
+  background-color: rgba(0, 20, 0, 0.7);
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+}
+
+.transferTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-share-tech-mono), monospace;
+  color: var(--terminal-text);
+}
+
+.transferTable th,
+.transferTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(51, 255, 51, 0.3);
+}
+
+.transferTable th {
+  font-weight: bold;
+  background-color: rgba(0, 51, 0, 0.7);
+  text-transform: uppercase;
+  color: var(--neon-green);
+  letter-spacing: 1px;
+}
+
+.transferTable tr {
+  transition: background-color 0.2s;
+}
+
+.transferTable tr:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+.transferTable a {
+  color: var(--terminal-blue);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s;
+  padding: 3px 8px;
+  border: 1px solid var(--terminal-blue);
+  border-radius: 3px;
+}
+
+.transferTable a:hover {
+  background-color: var(--terminal-blue);
+  color: black;
+  text-shadow: none;
+  box-shadow: 0 0 8px var(--terminal-blue);
+}
+
+.balanceContainer {
+  margin: 10px 0 15px;
+  padding: 16px;
+  background-color: rgba(0, 20, 0, 0.7);
+  border: 1px solid var(--terminal-green);
+  border-radius: 4px;
+  width: 100%;
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+  position: relative;
+}
+
+.balanceContainer::before {
+  content: "SECURE CONNECTION";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background-color: black;
+  padding: 0 8px;
+  font-size: 12px;
+  color: var(--terminal-green);
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.headerRow h2 {
+  margin: 0;
+  font-family: var(--font-vt323), monospace;
+  letter-spacing: 1px;
+}
+
+.refreshButton {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--terminal-green);
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: var(--terminal-green);
+}
+
+.refreshButton:hover {
+  background-color: var(--terminal-green);
+  color: black;
+  box-shadow: 0 0 8px var(--terminal-green);
+}
+
+.refreshButton:active {
+  transform: scale(0.95);
+}
+
+.balance {
+  font-weight: bold;
+  color: var(--terminal-green);
+  text-shadow: 0 0 5px rgba(51, 255, 51, 0.7);
+}
+
+.statsContainer {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stats {
+  font-family: var(--font-share-tech-mono), monospace;
+}
+
+.statLabel {
+  font-weight: bold;
+  margin-right: 5px;
+  color: var(--terminal-green);
+}
+
+.statDetail {
+  font-size: 14px;
+  color: rgba(51, 255, 51, 0.7);
+  margin-left: 5px;
+}
+
+.timestampContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-share-tech-mono), monospace;
+}
+
+.timestamp {
+  font-size: 14px;
+  color: rgba(51, 255, 51, 0.7);
+  text-align: right;
+}
+
+.cacheStatus {
+  font-size: 12px;
+  color: rgba(51, 255, 51, 0.5);
+  font-style: italic;
+  margin-top: 2px;
+  text-align: right;
+}
+
+.rankCell {
+  text-align: center;
+}
+
+.rank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rankPosition {
+  font-weight: bold;
+  color: var(--terminal-green);
+}
+
+.rankCount {
+  font-size: 12px;
+  color: rgba(51, 255, 51, 0.7);
+  margin-top: 2px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.profile:hover {
+  background-color: rgba(0, 255, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 0 0 8px rgba(0, 255, 0, 0.3);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--terminal-green);
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.displayName {
+  font-weight: bold;
+  color: var(--terminal-green);
+}
+
+.username {
+  font-size: 14px;
+  color: rgba(51, 255, 51, 0.7);
+}
+
+.shortAddress {
+  font-family: var(--font-share-tech-mono), monospace;
+  font-size: 14px;
+  color: rgba(51, 255, 51, 0.8);
+  padding: 2px 6px;
+  background-color: rgba(0, 20, 0, 0.5);
+  border-radius: 3px;
+  border: 1px dashed rgba(51, 255, 51, 0.3);
+}
+
+.addressCell {
+  max-width: 150px;
+  overflow: hidden;
+}
+
+.address {
+  font-family: var(--font-share-tech-mono), monospace;
+  font-size: 12px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(51, 255, 51, 0.6);
+}
+
+/* Blinking text effect for loading */
+@keyframes blink-text {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.3;
+  }
+}
+
+.loadingContainer:empty::after {
+  content: "LOADING SECURE DATA...";
+  animation: blink-text 1s steps(1) infinite;
+  color: var(--terminal-green);
+  font-family: var(--font-share-tech-mono), monospace;
+}
+
+@media (max-width: 768px) {
+  .transferTable th,
+  .transferTable td {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .addressCell {
+    max-width: 90px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Hide columns for mobile view */
+  .addressCell {
+    display: none;
+  }
+  
+  /* Hide the address column header */
+  .transferTable th:nth-child(3) {
+    display: none;
+  }
+  
+  /* Hide the transaction view column on small screens */
+  .transferTable th:last-child,
+  .transferTable td:last-child {
+    display: none;
+  }
+  
+  /* Make timestamp column smaller */
+  .timestampCell {
+    max-width: 100px;
+    font-size: 12px;
+    padding: 8px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .transferTable th:nth-child(4) {
+    font-size: 12px;
+    padding: 8px 4px;
+  }
+  
+  /* Adjust rank to be smaller */
+  .rankPosition {
+    font-size: 14px;
+  }
+  
+  .rankCount {
+    font-size: 10px;
+  }
+  
+  /* Reduce margins and padding */
+  .transferTable th,
+  .transferTable td {
+    padding: 6px 8px;
+  }
+  
+  .tableContainer {
+    margin-top: 10px;
+  }
+  
+  .balanceContainer {
+    padding: 12px;
+    margin: 5px 0 10px;
+  }
+  
+  .balanceContainer h2 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .refreshButton {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+}

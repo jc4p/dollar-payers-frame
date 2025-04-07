@@ -1,14 +1,20 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --neon-green: #00ff00;
+  --dark-green: #003300;
+  --terminal-black: #000000;
+  --terminal-green: #33ff33;
+  --terminal-text: #33ff33;
+  --terminal-blue: #0066ff;
+  --terminal-gray: #333333;
+  --terminal-light-gray: #666666;
+  --terminal-highlight: #00cc00;
+  --terminal-red: #ff0000;
+  --terminal-yellow: #ffff00;
+  --terminal-purple: #cc00cc;
+  --grid-color: rgba(0, 255, 0, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Using Google Fonts via Next.js */
 
 html,
 body {
@@ -17,11 +23,17 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: var(--terminal-text);
+  background: var(--terminal-black);
+  font-family: var(--font-share-tech-mono), monospace;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+  background-image: 
+    radial-gradient(var(--grid-color) 1px, transparent 1px),
+    radial-gradient(var(--grid-color) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  text-shadow: 0 0 2px rgba(51, 255, 51, 0.6);
 }
 
 * {
@@ -31,12 +43,161 @@ body {
 }
 
 a {
-  color: inherit;
+  color: var(--terminal-blue);
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+a:hover {
+  color: var(--terminal-highlight);
+  text-shadow: 0 0 5px var(--terminal-highlight);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-vt323), monospace;
+  letter-spacing: 1px;
+  color: var(--neon-green);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+/* Terminal blinking cursor effect */
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
   }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+  background-color: var(--terminal-text);
+  margin-left: 5px;
+  animation: blink 1s steps(1) infinite;
+}
+
+/* Scanline effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 1000;
+  opacity: 0.15;
+}
+
+/* Glitch effect for important elements */
+@keyframes glitch {
+  0% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  14% {
+    text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                0.05em 0 0 rgba(0, 255, 0, 0.75),
+                0 -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+                -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+                -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+  }
+}
+
+.glitch-text {
+  animation: glitch 3s infinite;
+  animation-direction: alternate-reverse;
+}
+
+button {
+  background: var(--terminal-gray);
+  color: var(--terminal-green);
+  border: 1px solid var(--terminal-green);
+  font-family: var(--font-share-tech-mono), monospace;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background: var(--terminal-green);
+  color: var(--terminal-black);
+  box-shadow: 0 0 8px var(--terminal-green);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--font-share-tech-mono), monospace;
+  border: 1px solid var(--terminal-green);
+}
+
+th {
+  background-color: var(--terminal-gray);
+  color: var(--neon-green);
+  text-transform: uppercase;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid var(--terminal-green);
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid var(--terminal-green);
+}
+
+tr:hover {
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+/* Loading text animation */
+@keyframes loading {
+  0% { content: "LOADING."; }
+  33% { content: "LOADING.."; }
+  66% { content: "LOADING..."; }
+  100% { content: "LOADING...."; }
+}
+
+.loading::after {
+  content: "LOADING.";
+  animation: loading 1s infinite;
 }
