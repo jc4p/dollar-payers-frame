@@ -9,7 +9,7 @@ export const metadata = {
       version: "next",
       imageUrl: "https://images.kasra.codes/pay-dollar-rectangle.png",
       button: {
-        title: "Hack into the mainframe",
+        title: "MANUAL OVERRIDE",
         action: {
           type: "launch_frame",
           name: "Dollar Payers Override",
