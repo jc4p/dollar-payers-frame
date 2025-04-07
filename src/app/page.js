@@ -3,7 +3,7 @@ import TransferTable from "../components/TransferTable";
 
 export const metadata = {
   title: 'Pay Dollar Stats',
-  description: 'Tracking USDC Transfers to Contract - Cyberpunk Dashboard',
+  description: 'Tracking USDC Transfers to Contract',
   other: {
     'fc:frame': JSON.stringify({
       version: "next",

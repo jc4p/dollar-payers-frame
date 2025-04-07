@@ -1,0 +1,17 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjk3NzIzMywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweGE2N0JhMDI4MTIzMWVCOUUyZWE0Y0Y5Nzg5NGMwYjBiNUI4MDFDYzYifQ",
+    "payload": "eyJkb21haW4iOiJkb2xsYXItcGF5ZXJzLmthc3JhLmNvZGVzIn0",
+    "signature": "MHhlNDcyOGFiNTVkZmJhODk1ZDA1ZTg3N2IyNWNiZWZkZTUyMjdhNWQ2NzRhYzEwMjRhNTQxODM3Y2M5OGUzOGEzMTJhNjQ0MjQ0MjJlOWZkMGE4MmY5MzViNTg3NjU1MzE2OTdkZjBiNWQ2YTI1NjYwMTIzZTRlMDQ4MGMwMGJmMTFj"
+  },
+  "frame": {
+    "version": "1",
+    "name": "Pay Dollar Stats",
+    "iconUrl": "https://images.kasra.codes/pay-dollar-square.png",
+    "homeUrl": "https://dollar-payers.kasra.codes",
+    "imageUrl": "https://images.kasra.codes/pay-dollar-rectangle.png",
+    "buttonTitle": "MANUAL OVERRIDE",
+    "splashImageUrl": "https://images.kasra.codes/pay-dollar-square.png",
+    "splashBackgroundColor": "#FFFFFF",
+  }
+}
