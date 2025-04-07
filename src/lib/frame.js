@@ -1,7 +1,11 @@
 import * as frame from '@farcaster/frame-sdk'
 
 export async function initializeFrame() {
-  const user = await frame.sdk.context.user
+  let user = (await frame.sdk.context).user
+
+  if (user.user) {
+    user = user;
+  }
 
   if (!user || !user.fid) {
     // most likely not in a frame
