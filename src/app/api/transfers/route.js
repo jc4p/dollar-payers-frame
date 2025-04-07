@@ -285,8 +285,8 @@ export async function GET(request) {
     const blockTimestamps = {};
     const transferDetails = [];
     
-    // Limit to 30 transactions to avoid timeouts
-    const limitedTxHashes = txHashes.slice(0, 30);
+    // Limit to 250 transactions to include more history while avoiding timeouts
+    const limitedTxHashes = txHashes.slice(0, 250);
     
     for (const txHash of limitedTxHashes) {
       try {
