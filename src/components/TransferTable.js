@@ -35,8 +35,16 @@ export default function TransferTable() {
       setLoading(true);
       setError(null);
       
-      const url = bustCache ? "/api/transfers?bust=1" : "/api/transfers";
-      const response = await fetch(url);
+      // Add timestamp to create a unique URL and prevent caching
+      const timestamp = Date.now();
+      const url = bustCache ? `/api/transfers?bust=1&t=${timestamp}` : "/api/transfers";
+      const response = await fetch(url, {
+        cache: 'no-store',
+        headers: {
+          'Pragma': 'no-cache',
+          'Cache-Control': 'no-cache'
+        }
+      });
       
       if (!response.ok) {
         const errorData = await response.json();
@@ -124,11 +132,11 @@ export default function TransferTable() {
           </div>
           <div className={styles.timestampContainer}>
             <div className={styles.timestamp}>
-              As of {new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})} {new Date().toLocaleDateString([], {month: '2-digit', day: '2-digit', year: 'numeric'})}
+              As of {data?.cachedAt ? new Date(data.cachedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''} {data?.cachedAt ? new Date(data.cachedAt).toLocaleDateString([], {month: '2-digit', day: '2-digit', year: 'numeric'}) : ''}
             </div>
             {data?.cached && data?.cachedAt && (
               <div className={styles.cacheStatus}>
-                (Cached data from {new Date(data.cachedAt).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})})
+                (Using cached data)
               </div>
             )}
           </div>

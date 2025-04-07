@@ -178,11 +178,13 @@ export async function GET(request) {
     const requestUrl = new URL(request.url);
     const bustCache = requestUrl.searchParams.has('bust');
     
+    let cachedData = null;
+    
     if (bustCache) {
       console.log("Cache bust requested, skipping cache");
     } else {
       // Try to get data from cache first
-      const cachedData = await getFromCache();
+      cachedData = await getFromCache();
       
       if (cachedData) {
         console.log("Using cached data");
@@ -191,7 +193,11 @@ export async function GET(request) {
           ...cachedData,
           cached: true
         };
-        return Response.json(responseData);
+        // Adding Cache-Control header to ensure browser doesn't cache
+        const headers = {
+          'Cache-Control': 'no-store, max-age=0, must-revalidate'
+        };
+        return Response.json(responseData, { headers });
       }
     }
     
@@ -410,7 +416,11 @@ export async function GET(request) {
     // Cache the final result - this is the only thing we're caching
     await setToCache(responseData);
     
-    return Response.json(responseData);
+    // Adding Cache-Control header to ensure browser doesn't cache
+    const headers = {
+      'Cache-Control': 'no-store, max-age=0, must-revalidate'
+    };
+    return Response.json(responseData, { headers });
   } catch (error) {
     console.error("Error fetching transfer logs:", error);
     return Response.json(
